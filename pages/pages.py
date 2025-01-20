@@ -58,7 +58,7 @@ class BabiesPage:
     def assert_babies_title(self):
         self.browser.element('//h1[@data-title="Малыши"]').should(have.exact_text("ОДЕЖДА ДЛЯ МАЛЫШЕЙ"))
 
-    @allure.step("Проверка наличия товаров на странице Малыши")
+    @allure.step("Проверка товаров на странице Малыши")
     def assert_exist_list(self):
         self.browser.element(products_list).should(be.existing)
 
@@ -84,7 +84,7 @@ class FavoritePage:
         self.browser.element('//h1[@data-title="Избранное"]').should(have.exact_text("ИЗБРАННОЕ"))
 
     def assert_clothes_in_favorites(self, favorite_id):
-        with allure.step("Проверка товара в избранном"):
+        with allure.step(f"Проверка id {favorite_id} товара в избранном"):
             self.browser.element(products_list + f'//button[@data-product_id="{favorite_id}"]').should(be.existing)
 
     @allure.step("Проверка отсутствия товаров в избранном")
@@ -119,7 +119,7 @@ class CartPage:
 
     def assert_clothes_in_cart(self, card_id):
         pass
-        with allure.step("Проверка товара в избранном"):
+        with allure.step(f"Проверка id {card_id} товара в корзине"):
             self.browser.element(cart_table + f'/div[2]//button[@data-product_id="{card_id}"]').should(be.existing)
 
     @allure.step("Проверка отсутствия товаров в корзине")
